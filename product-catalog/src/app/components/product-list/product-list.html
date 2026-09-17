@@ -1,0 +1,74 @@
+<div class="catalog-container">
+  <header class="catalog-header">
+    <h1> Каталог товарів</h1>
+    <p>Керування асортиментом товарів через Angular Signals та Dependency Injection</p>
+  </header>
+
+  <div class="content-grid">
+    <section class="form-section">
+      <h2>Додати новий товар</h2>
+      <form (submit)="onAddProduct(); $event.preventDefault()">
+        <div class="form-group">
+          <label for="name">Назва товару:</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="name" 
+            name="name" 
+            placeholder="Введіть назву" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="price">Ціна (грн):</label>
+          <input 
+            type="number" 
+            id="price" 
+            [(ngModel)]="price" 
+            name="price" 
+            placeholder="0" 
+            min="0" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Кількість (од.):</label>
+          <input 
+            type="number" 
+            id="quantity" 
+            [(ngModel)]="quantity" 
+            name="quantity" 
+            placeholder="0" 
+            min="0" 
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn-add">Додати товар</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Список товарів ({{ products().length }})</h2>
+      
+      <div *ngIf="products().length === 0" class="empty-state">
+        Каталог порожній. Додайте перший товар через форму!
+      </div>
+
+      <div class="products-grid">
+        <div class="product-card" *ngFor="let product of products()">
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p class="price">Ціна: <strong>{{ product.price }} грн</strong></p>
+            <p class="quantity">Кількість: <span>{{ product.quantity }} од.</span></p>
+          </div>
+          <button class="btn-delete" (click)="onRemoveProduct(product.id)">
+            Видалити
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
