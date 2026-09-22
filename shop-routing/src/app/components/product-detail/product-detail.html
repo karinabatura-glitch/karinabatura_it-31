@@ -1,0 +1,9 @@
+<div *ngIf="product; else notFound" style="padding: 15px; border: 1px solid #007bff; border-radius: 6px; max-width: 350px;">
+  <h2 style="margin-top: 0;">{{ product.name }}</h2>
+  <p>Ціна: {{ product.price }} грн</p>
+  <p>Кількість: {{ product.quantity }}</p>
+</div>
+
+<ng-template #notFound>
+  <h2 style="color: red;">Товар не знайдено</h2>
+</ng-template>
