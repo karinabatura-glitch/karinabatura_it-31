@@ -1,0 +1,58 @@
+<div class="page form-page">
+  <h2>Додати новий товар</h2>
+  <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    
+    <div class="form-group">
+      <label>Назва:</label>
+      <input 
+        type="text" 
+        name="name" 
+        [(ngModel)]="name" 
+        required 
+        minlength="3" 
+        maxlength="50"
+        #nameRef="ngModel"
+      >
+      <div *ngIf="submitted && nameRef.invalid" class="error">
+        <small *ngIf="nameRef.errors?.['required']">Поле обов'язкове.</small>
+        <small *ngIf="nameRef.errors?.['minlength']">Мінімум 3 символи.</small>
+        <small *ngIf="nameRef.errors?.['maxlength']">Максимум 50 символів.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Виробник:</label>
+      <input 
+        type="text" 
+        name="manufacturer" 
+        [(ngModel)]="manufacturer" 
+        required 
+        minlength="2" 
+        maxlength="40"
+        #manufacturerRef="ngModel"
+      >
+      <div *ngIf="submitted && manufacturerRef.invalid" class="error">
+        <small *ngIf="manufacturerRef.errors?.['required']">Поле обов'язкове.</small>
+        <small *ngIf="manufacturerRef.errors?.['minlength']">Мінімум 2 символи.</small>
+        <small *ngIf="manufacturerRef.errors?.['maxlength']">Максимум 40 символів.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Опис:</label>
+      <textarea 
+        name="description" 
+        [(ngModel)]="description" 
+        required 
+        minlength="10"
+        #descRef="ngModel"
+      ></textarea>
+      <div *ngIf="submitted && descRef.invalid" class="error">
+        <small *ngIf="descRef.errors?.['required']">Поле обов'язкове.</small>
+        <small *ngIf="descRef.errors?.['minlength']">Мінімум 10 символів.</small>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Додати товар</button>
+  </form>
+</div>

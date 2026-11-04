@@ -1,0 +1,15 @@
+<div class="page" *ngIf="product; else notFound">
+  <h2>Деталі товару</h2>
+  <p><strong>ID:</strong> {{ product.id }}</p>
+  <p><strong>Назва:</strong> {{ product.name }}</p>
+  <p><strong>Виробник:</strong> {{ product.manufacturer }}</p>
+  <p><strong>Опис:</strong> {{ product.description }}</p>
+  <a routerLink="/products" class="back-link">Назад до списку</a>
+</div>
+
+<ng-template #notFound>
+  <div class="page">
+    <h2>Товар не знайдено</h2>
+    <a routerLink="/products" class="back-link">Назад до списку</a>
+  </div>
+</ng-template>

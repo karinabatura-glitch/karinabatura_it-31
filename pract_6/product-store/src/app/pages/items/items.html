@@ -1,0 +1,11 @@
+<div class="page">
+  <h2>Список товарів</h2>
+  <ul class="product-list">
+    <li *ngFor="let product of products">
+      <div class="product-info">
+        <strong>{{ product.name }}</strong> — <span class="manuf">{{ product.manufacturer }}</span>
+      </div>
+      <a [routerLink]="['/product', product.id]" class="details-link">Детальніше</a>
+    </li>
+  </ul>
+</div>
